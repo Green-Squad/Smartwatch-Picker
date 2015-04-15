@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20150415142754) do
     t.float    "price"
     t.date     "release_date"
     t.string   "amazon_url"
+    t.string   "notes"
     t.string   "image_path"
     t.integer  "engadget_score"
     t.datetime "created_at"

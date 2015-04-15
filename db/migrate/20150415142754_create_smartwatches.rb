@@ -6,6 +6,7 @@ class CreateSmartwatches < ActiveRecord::Migration
       t.float :price
       t.date :release_date
       t.string :amazon_url
+      t.string :notes
       t.string :image_path
       t.integer :engadget_score
 
