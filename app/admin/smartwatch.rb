@@ -1,4 +1,5 @@
 ActiveAdmin.register Smartwatch do
+  permit_params :name, :battery_life, :price, :release_date, :amazon_url, :image_path, :engadget_score
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
