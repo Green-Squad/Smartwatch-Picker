@@ -17,6 +17,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: localhost
+  username: <%= ENV['SMARTWATCH_DATABASE_USERNAME'] %>
+  password: <%= ENV['SMARTWATCH_DATABASE_PASSWORD'] %>
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -29,7 +32,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: smartwatch_picker
+  #username: level_cap
 
   # The password associated with the postgres role (username).
   #password:
@@ -81,5 +84,3 @@ test:
 production:
   <<: *default
   database: smartwatch_picker_production
-  username: smartwatch_picker
-  password: <%= ENV['SMARTWATCH_PICKER_DATABASE_PASSWORD'] %>
