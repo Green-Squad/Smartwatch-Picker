@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150415142754) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "phone_os", force: :cascade do |t|
+  create_table "phone_oses", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -68,14 +68,14 @@ ActiveRecord::Schema.define(version: 20150415142754) do
     t.datetime "updated_at"
   end
 
-  create_table "supported_os", force: :cascade do |t|
+  create_table "supported_oses", force: :cascade do |t|
     t.integer  "phone_os_id"
     t.integer  "smartwatch_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "supported_os", ["phone_os_id"], name: "index_supported_os_on_phone_os_id", using: :btree
-  add_index "supported_os", ["smartwatch_id"], name: "index_supported_os_on_smartwatch_id", using: :btree
+  add_index "supported_oses", ["phone_os_id"], name: "index_supported_oses_on_phone_os_id", using: :btree
+  add_index "supported_oses", ["smartwatch_id"], name: "index_supported_oses_on_smartwatch_id", using: :btree
 
 end

@@ -11,6 +11,7 @@ gem 'pg'
 gem 'rails', '~> 4.2'
 gem 'sass-rails', '~> 4.0.3'
 gem 'spring',        group: :development
+gem 'turbolinks'
 gem 'tzinfo-data'
 gem 'uglifier', '>= 1.3.0'
 gem 'validates_formatting_of'

@@ -38,7 +38,7 @@ smartwatches = [{name: 'LG G Watch', battery_life: 1, engadget_score: 68, releas
                 },
                 {name: 'Microsoft Band', battery_life: 2, engadget_score: 65, release_date: Date.new(2014, 10, 29), image_path: '',
                  amazon_url: 'http://www.amazon.com/gp/product/B00P2S2M88/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B00P2S2M88&linkCode=as2&tag=gresqu-20&linkId=MXK42QGMCH6F26IK',
-                 notes: 'Requires Android 4.3+, iPhone 4S (or newer) with iOS 7.1+, or Windows Phone 8.1+', phone_oses: ['Android', 'iOS', 'Microsoft']
+                 notes: 'Requires Android 4.3+, iPhone 4S (or newer) with iOS 7.1+, or Windows Phone 8.1+', phone_oses: ['Android', 'iOS', 'Windows']
                 },
                 {name: 'Samsung Gear Fit', battery_life: 3, engadget_score: 62, release_date: Date.new(2014, 4, 11), image_path: '',
                  amazon_url: 'http://www.amazon.com/gp/product/B00JBJ3JBI/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B00JBJ3JBI&linkCode=as2&tag=gresqu-20&linkId=Q545EQN34WFBRMHX',
@@ -65,11 +65,14 @@ smartwatches = [{name: 'LG G Watch', battery_life: 1, engadget_score: 68, releas
                 # notes: '', phone_oses: ['']
                 # }
                 ]
+
+
 smartwatches.each do |smartwatch|
   phone_oses = smartwatch.delete(:phone_oses)
   smartwatch = Smartwatch.create(smartwatch)
   phone_oses.each do |phone_os|
-    SupportedOs.create(phone_os_id: PhoneOs.find_by_name(phone_os), smartwatch_id: smartwatch.id)
+    phone_os_id = PhoneOs.where(name: phone_os).first.id
+    SupportedOs.create(phone_os_id: phone_os_id, smartwatch_id: smartwatch.id)
   end
 end
 
