@@ -24,6 +24,7 @@ $(function () {
 
     })(jQuery);
 
+    $('.ui-slider-handle').draggable();
 
     var smartwatches = [];
     var params = {};
