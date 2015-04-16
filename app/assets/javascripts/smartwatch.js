@@ -64,6 +64,7 @@ $(function () {
         $('#page1').animate({
             right: '+=100vw'
         });
+        $('#page2').show();
         $('#page2').animate({
             right: '+=100vw'
         });
@@ -80,6 +81,7 @@ $(function () {
                 $('#page2').animate({
                     right: '+=100vw'
                 });
+                $('#page3').show();
                 $('#page3').animate({
                     right: '+=100vw'
                 });
@@ -99,6 +101,7 @@ $(function () {
                 $('#page3').animate({
                     right: '+=100vw'
                 });
+                $('#page4').show();
                 $('#page4').animate({
                     right: '+=100vw'
                 });
