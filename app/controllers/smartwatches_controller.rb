@@ -6,6 +6,15 @@ class SmartwatchesController < ApplicationController
       phoneos = PhoneOs.find_by_name(params[:phoneos])
       smartwatches = phoneos.smartwatches
     end
+
+    if (params[:battery])
+      smartwatches = smartwatches.where('battery_life >= ?', params[:battery])
+    end
+
+    if (params[:price])
+      smartwatches = smartwatches.where('price <= ?', params[:price])
+    end
+
     smartwatches.to_a.sort  {
         |a, b|  b.engadget_score - (Time.now.to_date - b.release_date).to_i / 30 <=> a.engadget_score - (Time.now.to_date - a.release_date).to_i / 30
     }

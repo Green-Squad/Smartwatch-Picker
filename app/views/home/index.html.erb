@@ -5,6 +5,7 @@
       <a class="navbar-brand page-scroll" href="http://www.watchape.com">Watch Ape</a>
       <a href="/">Start over</a>
     </div>
+  </div>
 </nav>
 
 <header>
@@ -23,22 +24,50 @@
 
         <div class="funkyradio">
           <div class="funkyradio-success">
-            <input type="radio" value="Android" name="radio" id="radio1" />
+            <input type="radio" value="Android" name="radio" id="radio1"/>
             <label for="radio1">Android</label>
           </div>
 
           <div class="funkyradio-success">
-            <input type="radio" value="iOS" name="radio" id="radio2" />
+            <input type="radio" value="iOS" name="radio" id="radio2"/>
             <label for="radio2">iOS</label>
           </div>
 
           <div class="funkyradio-success">
-            <input type="radio" value="Windows" name="radio" id="radio3" />
+            <input type="radio" value="Windows" name="radio" id="radio3"/>
             <label for="radio3">Windows</label>
           </div>
 
         </div>
-       <button class="btn btn-primary btn-xl page-scroll button-margin" id="button2">Next</button>
+        <button class="btn btn-primary btn-xl page-scroll button-margin" id="button2">Next</button>
+      </div>
+
+      <div class="page" id="page3">
+        <h1>What is the minimum battery life?</h1>
+
+        <p>
+          <span id="battery-life-amount"></span>
+        </p>
+
+        <div id="battery-slider" class="slider"></div>
+
+        <button class="btn btn-primary btn-xl page-scroll button-margin" id="button3">Next</button>
+      </div>
+
+      <div class="page" id="page4">
+        <h1>What is the most you are willing to pay?</h1>
+
+        <p>
+          <span id="price-amount"></span>
+        </p>
+
+        <div id="price-slider" class="slider"></div>
+
+        <button class="btn btn-primary btn-xl page-scroll button-margin" id="button4">Finish</button>
+      </div>
+
+      <div class="page" id="page5">
+        <h1>Here are your results</h1>
       </div>
 
     </div>
