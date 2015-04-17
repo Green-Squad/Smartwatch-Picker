@@ -1,10 +1,11 @@
 class SmartwatchesController < ApplicationController
   def index
-    # Sorted on Engadget Score - months since release
-    smartwatches = Smartwatch.all
+
     if(params[:phoneos])
       phoneos = PhoneOs.find_by_name(params[:phoneos])
       smartwatches = phoneos.smartwatches
+    else
+      smartwatches = Smartwatch.all
     end
 
     if (params[:battery])
@@ -15,14 +16,53 @@ class SmartwatchesController < ApplicationController
       smartwatches = smartwatches.where('price <= ?', params[:price])
     end
 
-    smartwatches.to_a.sort  {
-        |a, b|  b.engadget_score - (Time.now.to_date - b.release_date).to_i / 30 <=> a.engadget_score - (Time.now.to_date - a.release_date).to_i / 30
-    }
+    # Sorted on Engadget Score - months since release
+    smartwatches = smartwatches.to_a.sort do |a, b|  
+       b_score = b.engadget_score
+       b_months = (Time.now.to_date - b.release_date).to_i / 30  
+       if b_months > 12
+         b_score *= 0.98 ** 12
+         b_months -= 12
+         b_score -= (b_months * 0.25)
+       else
+         b_score *= 0.98 ** b_months
+       end
+       
+       a_score = a.engadget_score
+       a_months = (Time.now.to_date - a.release_date).to_i / 30  
+       if a_months > 12
+         a_score *= 0.98 ** 12
+         a_months -= 12
+         a_score -= (a_months * 0.25)
+       else
+         a_score *= 0.98 ** a_months
+       end
+       
+        b_score <=> a_score
+
+       #b.engadget_score * (0.98) ** ((Time.now.to_date - b.release_date).to_i / 30) <=> a.engadget_score * (0.98) ** ((Time.now.to_date - a.release_date).to_i / 30)
+       # |a, b|  b.engadget_score  - ((Time.now.to_date - b.release_date).to_i / 30) <=> a.engadget_score - ((Time.now.to_date - a.release_date).to_i / 30)
+    end
 
     #array = []
     #smartwatches.each do |a|
-    #  array << {name: a.name, score: a.engadget_score - (Time.now.to_date - a.release_date).to_i / 30, engadget_score: a.engadget_score}
+    #  a_score = a.engadget_score
+    #   a_months = (Time.now.to_date - a.release_date).to_i / 30  
+    #   if a_months > 12
+    #     a_score *= 0.98 ** 12
+    #     a_months -= 12
+    #     a_score -= (a_months * 0.25)
+    #   else
+    #     a_score *= 0.98 ** a_months
+    #   end
+    #  array << {name: a.name, score: a_score, engadget_score: a.engadget_score}
     #end
+    
+    #render json: array
+
+    smartwatches.each do |smartwatch| 
+      smartwatch.image_path = view_context.image_path(smartwatch.image_path)
+    end
 
     render json: smartwatches
   end

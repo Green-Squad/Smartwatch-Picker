@@ -36,7 +36,6 @@ $(function () {
         $.each(params, function (key, value) {
             url += key + '=' + value + '&'
         });
-        console.log(url);
         return $.get(url, function (data) {
             smartwatches = data;
             updateSmartwatches(smartwatches);
@@ -51,10 +50,25 @@ $(function () {
         } else {
             $('#smartwatch-count').append(' smartwatches')
         }
-        $('#smartwatch-content').html('');
+        $('#smartwatch-list').html('');
         $.each(smartwatches, function (index, smartwatch) {
-            $('#smartwatch-content').append(smartwatch.name + '<br>');
+            $('#smartwatch-list').append(smartwatchBox(smartwatch));
         })
+    }
+    
+    function smartwatchBox(smartwatch) {
+      html = '<a href="' + smartwatch.amazon_url + '" class="smartwatch-box col-md-4" style="background-image: url(' + smartwatch.image_path + ')">';
+      html +=   '<h2>' + smartwatch.name + '</h2>';
+      html +=   '<span class="orange">Buy for $' + smartwatch.price + '</span>';
+      html +=   '<br>'
+      html +=   smartwatch.notes;
+      //html +=   '<br>'
+      //html +=   smartwatch.battery_life;
+      //html +=   '<br>'
+      //html +=   smartwatch.release_date;
+      html += '</a>';
+      
+      return html
     }
 
     function errorMessage(message) {
@@ -63,7 +77,9 @@ $(function () {
 
     $('#button1').click(function () {
         $('#page1').animate({
-            right: '+=100vw'
+            right: '+=100vw',
+        }, function() {
+          $(this).hide();  
         });
         $('#page2').show();
         $('#page2').animate({
@@ -81,6 +97,8 @@ $(function () {
             $.when(getSmartwatches()).done(function () {
                 $('#page2').animate({
                     right: '+=100vw'
+                }, function() {
+                  $(this).hide();  
                 });
                 $('#page3').show();
                 $('#page3').animate({
@@ -101,6 +119,8 @@ $(function () {
             $.when(getSmartwatches()).done(function () {
                 $('#page3').animate({
                     right: '+=100vw'
+                }, function() {
+                  $(this).hide();  
                 });
                 $('#page4').show();
                 $('#page4').animate({
@@ -120,18 +140,39 @@ $(function () {
             $.when(getSmartwatches()).done(function () {
                 $('#page4').animate({
                     right: '+=100vw'
+                  }, function() {
+                  $(this).hide();  
                 });
                 $('#page5').animate({
                     right: '+=100vw'
                 });
-                $('#smartwatch-content').show('slide');
+                openSmartwatches();
             });
         }
     });
 
     $('#smartwatch-arrow').click(function () {
-        $('#smartwatch-content').toggle('slide');
+        toggleSmartwatches();
     });
+    
+    
+    function openSmartwatches() {
+      $('#smartwatch-arrow i').removeClass('fa-arrow-up').addClass('fa-arrow-down');
+      $('#smartwatch-content').show();
+    }
+    
+    function closeSmartwatches() {
+      $('#smartwatch-arrow i').removeClass('fa-arrow-down').addClass('fa-arrow-up');
+      $('#smartwatch-content').hide();
+    }
+    
+    function toggleSmartwatches() {
+      if ($('#smartwatch-content').is(':visible')) {
+        closeSmartwatches();
+      } else {
+        openSmartwatches();
+      }
+    }
 
     // SLIDER
 
