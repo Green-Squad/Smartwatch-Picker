@@ -15,6 +15,8 @@ gem 'turbolinks'
 gem 'tzinfo-data'
 gem 'uglifier', '>= 1.3.0'
 gem 'validates_formatting_of'
+gem 'vacuum'
+gem 'whenever'
 
 group :development, :test do
   gem 'rspec-rails'
