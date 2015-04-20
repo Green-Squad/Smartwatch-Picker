@@ -30,7 +30,7 @@ body {
   width: 100%;
   box-sizing: border-box;
   padding: 0 20px;
-  overflow-y: auto;
+  z-index: 3;
 }
 
 #smartwatch-count {
@@ -50,6 +50,21 @@ body {
   display: none;
   height: 75vh;
   overflow-y: auto;
+  padding: 0 0 20px 0;
+}
+
+#smartwatch-top-bar {
+  cursor: pointer;
+}
+
+#social-bar {
+  width: 100%;
+  height: 40px;
+  background: #ff0000;
+  position: fixed;
+  bottom: 0;
+  z-index: 4;
+  display: none;
 }
 
 .touch-target {
@@ -95,17 +110,17 @@ body {
     opacity: .5;
 }
 
-.smartwatch-box:hover {
+.smartwatch-box:hover, .smartwatch-box:active, .smartwatch-box:focus{
   text-decoration: none;
   color: #fff;
   background-color: #CD2400;
 }
 
-.smartwatch-box:hover .orange {
+.smartwatch-box:hover .orange, .smartwatch-box:active .orange, .smartwatch-box:focus .orange {
   color: #fff;
 }
 
-.smartwatch-box:hover::before {
+.smartwatch-box:hover::before, .smartwatch-box:active::before, .smartwatch-box:focus::before {
   background-color: #54180C;
 }
 
@@ -153,6 +168,45 @@ header .header-content {
   header .header-content {
     padding-top: 50px !important;
   }
+}
+
+.navbar-header {
+  width: 100%;
+  display: table;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.display-table {
+  display: table;
+}
+
+#start-over {
+  display: none;
+  transition: none;
+  margin-right: -15px;
+}
+
+@media (min-width: 768px) {
+  #start-over {
+    margin-right: 0;
+  }
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.slider-text {
+  margin-top: 40px;  
+  font-size: 20px !important;
+}
+
+.ui-slider-handle {
+  outline: none;
 }
 
 /* radio */

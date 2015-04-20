@@ -3,8 +3,13 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <a class="navbar-brand page-scroll" href="http://www.watchape.com">Watch Ape</a>
-      <a href="/">Start over</a>
+      <div class="pull-right display-table" style="height: 50px;">
+        <div class="table-cell">
+          <a href="/" class="btn btn-primary" id="start-over">Start over</a>
+        </div>
+      </div>
     </div>
+    
   </div>
 </nav>
 
@@ -46,9 +51,8 @@
       </div>
 
       <div class="page" id="page3">
-        <h1>What is the minimum battery life?</h1>
-
-        <p>
+        <h1>How long should the battery last?</h1>
+        <p class="slider-text">
           <span id="battery-life-amount"></span>
         </p>
 
@@ -58,9 +62,9 @@
       </div>
 
       <div class="page" id="page4">
-        <h1>What is the most you are willing to pay?</h1>
+        <h1>What is your budget?</h1>
 
-        <p>
+        <p class="slider-text">
           <span id="price-amount"></span>
         </p>
 
@@ -71,6 +75,11 @@
 
       <div class="page" id="page5">
         <h1>Here are your results</h1>
+        <p class="slider-text">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-text="Find the perfect smartwatch for you">Tweet</a>
+  
+          <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fpicker.watchape.com&amp;layout=button_count&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp" style="overflow:hidden;width:120px;height:20px;" scrolling="no" frameborder="0" allowTransparency="true"><a href="http://www.addlikebutton.net" class="fbook">www.addlikebutton.net</a></iframe>
+        </p>
       </div>
 
     </div>
@@ -78,11 +87,12 @@
 
 
 </header>
-
 <div id="smartwatches">
-  <div id="smartwatch-count"></div>
-  <div id="smartwatch-arrow"><i class="fa fa-arrow-up touch-target"></i></div>
-  <div class="clearfix"></div>
+  <div id="smartwatch-top-bar">
+    <div id="smartwatch-count"></div>
+    <div id="smartwatch-arrow"><i class="fa fa-arrow-up touch-target"></i></div>
+    <div class="clearfix"></div>
+  </div>
   <div id="smartwatch-content">
     <h2>Smartwatches sorted by <em class="orange">awesomeness</em></h2>
     <div id='smartwatch-list'>
@@ -90,3 +100,12 @@
     </div>
   </div>
 </div>
+<div id="social-bar">
+  
+               <a href="https://twitter.com/share" class="twitter-share-button" data-text="Find the perfect smartwatch for you">Tweet</a>
+  
+          <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fpicker.watchape.com&amp;layout=button_count&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp" style="overflow:hidden;width:120px;height:20px;" scrolling="no" frameborder="0" allowTransparency="true"><a href="http://www.addlikebutton.net" class="fbook">www.addlikebutton.net</a></iframe>
+  
+</div>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

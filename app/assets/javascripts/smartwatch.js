@@ -3,7 +3,7 @@ $(function () {
 
     (function ($) {
         $.fn.daysText = function (days) {
-            text = days + ' day';
+            text = 'At least ' + days + ' day';
             if (days !== 1) {
                 text += 's'
             }
@@ -12,7 +12,7 @@ $(function () {
         };
 
         $.fn.priceText = function (price) {
-            text = '$' + price;
+            text = 'At most $' + price;
 
             this.text(text);
             this.attr('data-price', price);
@@ -28,6 +28,7 @@ $(function () {
 
     var smartwatches = [];
     var params = {};
+    var buttonsClickable = [true, true, true, true]
 
     getSmartwatches();
 
@@ -44,12 +45,16 @@ $(function () {
 
     function updateSmartwatches(smartwatches) {
         count = smartwatches.length
-        $('#smartwatch-count').html(count)
+        html = '<button class="btn btn-primary" style="padding: 2px 8px">'
+        html += count
         if (count === 1) {
-            $('#smartwatch-count').append(' smartwatch')
+            html += ' SMARTWATCH';
         } else {
-            $('#smartwatch-count').append(' smartwatches')
+            html += ' SMARTWATCHES';
         }
+        html += '</button>'
+        $('#smartwatch-count').html(html);
+        
         $('#smartwatch-list').html('');
         $.each(smartwatches, function (index, smartwatch) {
             $('#smartwatch-list').append(smartwatchBox(smartwatch));
@@ -72,10 +77,46 @@ $(function () {
     }
 
     function errorMessage(message) {
-        alert(message);
+        bootbox.alert({
+            message: message,
+            title: "Error"
+        });
+    }
+    
+    $('#smartwatch-top-bar').click(function () {
+        toggleSmartwatches();
+    });
+    
+    
+    function openSmartwatches() {
+      $('#smartwatch-arrow i').removeClass('fa-arrow-up').addClass('fa-arrow-down');
+      $('#smartwatch-content').slideDown();
+      $('#social-bar').slideDown()
+      $('#smartwatches').animate({
+        bottom: '40px'
+      });
+    }
+    
+    function closeSmartwatches() {
+      $('#smartwatch-arrow i').removeClass('fa-arrow-down').addClass('fa-arrow-up');
+      $('#social-bar').slideUp();
+      $('#smartwatches').animate({
+        bottom: '0px'
+      });
+      $('#smartwatch-content').slideUp();
+    }
+    
+    function toggleSmartwatches() {
+      if ($('#smartwatch-content').is(':visible')) {
+        closeSmartwatches();
+      } else {
+        openSmartwatches();
+      }
     }
 
     $('#button1').click(function () {
+      if (buttonsClickable[0]) {
+        buttonsClickable[0] = false;
         $('#page1').animate({
             right: '+=100vw',
         }, function() {
@@ -85,13 +126,17 @@ $(function () {
         $('#page2').animate({
             right: '+=100vw'
         });
+        $('#start-over').fadeIn(1000);
+      }
     })
 
     $('#button2').click(function () {
         var value = $('input[name=radio]:checked', '#page2 .funkyradio').val();
         if (value === undefined) {
-            errorMessage('You must select something')
+            errorMessage('You must choose a phone type.')
         } else {
+          if (buttonsClickable[1]) {
+            buttonsClickable[1] = false;
             $(this).setLoading();
             params.phoneos = value;
             $.when(getSmartwatches()).done(function () {
@@ -105,7 +150,7 @@ $(function () {
                     right: '+=100vw'
                 });
             });
-
+          }
         }
     });
 
@@ -114,6 +159,8 @@ $(function () {
         if (value === undefined) {
             errorMessage('You must select something')
         } else {
+          if (buttonsClickable[2]) {
+            buttonsClickable[2] = false;
             $(this).setLoading();
             params.battery = value;
             $.when(getSmartwatches()).done(function () {
@@ -127,6 +174,7 @@ $(function () {
                     right: '+=100vw'
                 });
             });
+          }
         }
     });
 
@@ -135,6 +183,8 @@ $(function () {
         if (value === undefined) {
             errorMessage('You must select something')
         } else {
+          if (buttonsClickable[3]) {
+            buttonsClickable[3] = false;
             $(this).setLoading();
             params.price = value;
             $.when(getSmartwatches()).done(function () {
@@ -143,36 +193,20 @@ $(function () {
                   }, function() {
                   $(this).hide();  
                 });
+                $('#page5').show();
                 $('#page5').animate({
                     right: '+=100vw'
+                }, function() {
+                  
+                  setTimeout(openSmartwatches, 500);
                 });
-                openSmartwatches();
+                
             });
+          }
         }
     });
 
-    $('#smartwatch-arrow').click(function () {
-        toggleSmartwatches();
-    });
     
-    
-    function openSmartwatches() {
-      $('#smartwatch-arrow i').removeClass('fa-arrow-up').addClass('fa-arrow-down');
-      $('#smartwatch-content').show();
-    }
-    
-    function closeSmartwatches() {
-      $('#smartwatch-arrow i').removeClass('fa-arrow-down').addClass('fa-arrow-up');
-      $('#smartwatch-content').hide();
-    }
-    
-    function toggleSmartwatches() {
-      if ($('#smartwatch-content').is(':visible')) {
-        closeSmartwatches();
-      } else {
-        openSmartwatches();
-      }
-    }
 
     // SLIDER
 
