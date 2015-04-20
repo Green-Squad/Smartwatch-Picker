@@ -44,8 +44,8 @@ $(function () {
     }
 
     function updateSmartwatches(smartwatches) {
-        count = smartwatches.length
-        html = '<button class="btn btn-primary" style="padding: 2px 8px">'
+        var count = smartwatches.length;
+        var html = '<button class="btn btn-primary" style="padding: 2px 8px">'
         html += count
         if (count === 1) {
             html += ' SMARTWATCH';
@@ -56,18 +56,21 @@ $(function () {
         $('#smartwatch-count').html(html);
         
         $('#smartwatch-list').html('');
-        $.each(smartwatches, function (index, smartwatch) {
-            $('#smartwatch-list').append(smartwatchBox(smartwatch));
+        
+        $.each(smartwatches, function (index, smartwatch) {        	
+            $('#smartwatch-list').append(smartwatchBox(index, smartwatch));
         })
     }
     
-    function smartwatchBox(smartwatch) {
+    function smartwatchBox(index, smartwatch) {
       html = '<a href="' + smartwatch.amazon_url + '" class="smartwatch-box col-md-4" style="background-image: url(' + smartwatch.image_path + ')">';
-      html +=   '<h2>' + smartwatch.name + '</h2>';
+      html +=   '<h2 class="display-table" style="width:100%">';
+      html +=		'<span class="table-cell" style="width:100%">' +smartwatch.name + '</span>';
+      html +=		'<span class="btn btn-primary table-cell" style="text-align:right">' + '#' + (index + 1) + '</span>'; 
+      html +=	'</h2>';
       html +=   '<span class="orange">Buy for $' + smartwatch.price + '</span>';
-      html +=   '<br>'
+      html +=   '<br>';
       html +=   smartwatch.notes;
-      //html +=   '<br>'
       //html +=   smartwatch.battery_life;
       //html +=   '<br>'
       //html +=   smartwatch.release_date;
