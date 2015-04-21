@@ -57,9 +57,13 @@ $(function () {
         
         $('#smartwatch-list').html('');
         
-        $.each(smartwatches, function (index, smartwatch) {        	
-            $('#smartwatch-list').append(smartwatchBox(index, smartwatch));
-        })
+        if (count === 0) {
+             $('#smartwatch-content h2').text('We could not find a smartwatch based on your choices. Start over and be less picky.');  
+        } else {
+          $.each(smartwatches, function (index, smartwatch) {        	
+              $('#smartwatch-list').append(smartwatchBox(index, smartwatch));
+          });
+        }
     }
     
     function smartwatchBox(index, smartwatch) {
