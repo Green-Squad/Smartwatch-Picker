@@ -90,20 +90,19 @@ $(function () {
     
     function openSmartwatches() {
       $('#smartwatch-arrow i').removeClass('fa-arrow-up').addClass('fa-arrow-down');
-      $('#smartwatch-content').slideDown();
+      $('#smartwatch-content').show();
       $('#social-bar').slideDown()
-      $('#smartwatches').animate({
-        bottom: '40px'
-      });
+      $('#smartwatches').switchClass('smartwatches-closed', 'smartwatches-open');
     }
     
     function closeSmartwatches() {
       $('#smartwatch-arrow i').removeClass('fa-arrow-down').addClass('fa-arrow-up');
+       
+        $('#smartwatches').switchClass('smartwatches-open', 'smartwatches-closed', 500, 'swing', function() {
+          $('#smartwatch-content').hide(); 
+        });
+
       $('#social-bar').slideUp();
-      $('#smartwatches').animate({
-        bottom: '0px'
-      });
-      $('#smartwatch-content').slideUp();
     }
     
     function toggleSmartwatches() {
