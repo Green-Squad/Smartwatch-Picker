@@ -58,8 +58,11 @@ $(function () {
         $('#smartwatch-list').html('');
         
         if (count === 0) {
-             $('#smartwatch-content h2').text('We could not find a smartwatch based on your choices. Start over and be less picky.');  
+             $('#smartwatch-content h2').html('We could not find a smartwatch based on your choices. <a href="/" class="btn btn-primary">Start over</a> and be less picky.');
         } else {
+          if (count === 1) {
+            $('#smartwatch-content h2').html('We have found the <em class="orange">only smartwatch</em> that fits your needs.');
+          }
           $.each(smartwatches, function (index, smartwatch) {        	
               $('#smartwatch-list').append(smartwatchBox(index, smartwatch));
           });
@@ -139,6 +142,7 @@ $(function () {
             errorMessage('You must choose a phone type.')
         } else {
           if (buttonsClickable[1]) {
+            $('#smartwatch-content h2').html('These smartwatches fit your needs and are sorted by <em class="orange">awesomeness</em>.');
             buttonsClickable[1] = false;
             $(this).setLoading();
             params.phoneos = value;
@@ -213,9 +217,9 @@ $(function () {
 
     $("#battery-slider").slider({
         range: "max",
-        min: 1,
+        min: 0.25,
         max: 10,
-        value: 2,
+        value: 0.75,
         step: 0.25,
         slide: function (event, ui) {
             $("#battery-life-amount").daysText(ui.value);
