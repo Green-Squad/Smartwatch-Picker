@@ -63,7 +63,7 @@ $(function () {
     }
     
     function smartwatchBox(index, smartwatch) {
-      html = '<a href="' + smartwatch.amazon_url + '" class="smartwatch-box col-md-4" style="background-image: url(' + smartwatch.image_path + ')">';
+      html = '<a target="_blank" href="' + smartwatch.amazon_url + '" class="smartwatch-box col-md-4" style="background-image: url(' + smartwatch.image_path + ')">';
       html +=   '<h2 class="display-table" style="width:100%">';
       html +=		'<span class="table-cell" style="width:100%">' +smartwatch.name + '</span>';
       html +=		'<span class="btn btn-primary table-cell" style="text-align:right">' + '#' + (index + 1) + '</span>'; 

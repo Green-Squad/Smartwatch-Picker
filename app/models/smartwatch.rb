@@ -8,6 +8,7 @@ class Smartwatch < ActiveRecord::Base
    request.associate_tag = 'greensq-20'
    
    asin = /http:\/\/(?:www\.|)amazon\.com\/(?:gp\/product|[^\/]+\/dp|dp)\/([^\/]+)/.match(self.amazon_url)
+   if asin
    asin = asin[1]
    
    response = request.item_lookup(
@@ -17,9 +18,10 @@ class Smartwatch < ActiveRecord::Base
       }
     )
     
-     price = response.to_h['ItemLookupResponse']['Items']['Item']['Offers']['Offer']['OfferListing']['Price']['FormattedPrice'].slice(1..-1)
+      price = response.to_h['ItemLookupResponse']['Items']['Item']['Offers']['Offer']['OfferListing']['Price']['FormattedPrice'].slice(1..-1)
      
-     self.update(price: price) if price 
+      self.update(price: price) if price 
+  end
   end
   
   def self.update_prices

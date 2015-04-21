@@ -55,11 +55,19 @@ smartwatches = [{name: 'LG G Watch', battery_life: 1, engadget_score: 68, releas
                 {name: 'Samsung Gear S', battery_life: 2, engadget_score: 65, release_date: Date.new(2014, 11, 7), image_path: 'smartwatches/samsung-gear-s.png',
                  amazon_url: 'http://www.amazon.com/gp/product/B00PHPW1NC/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B00PHPW1NC&linkCode=as2&tag=gresqu-20&linkId=ZAT6O6IADD5GVQTP',
                  notes: 'Compatible with various Samsung Galaxy smartphones and tablets', phone_oses: ['Android']
+                },
+                {name: 'Apple Watch Sport', battery_life: 0.75, engadget_score: 75, release_date: Date.new(2015, 4, 24), image_path: 'smartwatches/apple-watch-sport.png',
+                 amazon_url: 'http://store.apple.com/us/buy-watch/apple-watch-sport',
+                 notes: 'Requires iPhone 5 or later with iOS 8.2 or higher', price: 349.00, phone_oses: ['iOS']
+                },
+                {name: 'Apple Watch', battery_life: 0.75, engadget_score: 75, release_date: Date.new(2015, 4, 24), image_path: 'smartwatches/apple-watch.png',
+                 amazon_url: 'http://store.apple.com/us/buy-watch/apple-watch',
+                 notes: 'Requires iPhone 5 or later with iOS 8.2 or higher', price: 549.00, phone_oses: ['iOS']
                 }#,
-                #{name: 'Apple Watch', battery_life: 0.75, engadget_score: , release_date: Date.new(2015, 4, 24), image_path: '',
-                # amazon_url: '',
-                # notes: '', phone_oses: ['']
-                # },
+                #{name: 'Apple Watch Edition', battery_life: 0.75, engadget_score: 75, release_date: Date.new(2015, 4, 24), image_path: 'smartwatches/apple-watch-edition.png',
+                # amazon_url: 'http://store.apple.com/us/buy-watch/apple-watch-edition',
+                # notes: 'Requires iPhone 5 or later with iOS 8.2 or higher', price: 10000.00, phone_oses: ['iOS']
+                #},
                 #{name: 'Garmin Vivoactive', battery_life: 21, engadget_score:, release_date: Date.new(2015, 1, 6), image_path: '',
                 # amazon_url: 'http://www.amazon.com/gp/product/B00RE1UL52/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B00RE1UL52&linkCode=as2&tag=gresqu-20&linkId=IY3SW2A2XJ3NOAPZ',
                 # notes: '', phone_oses: ['']
