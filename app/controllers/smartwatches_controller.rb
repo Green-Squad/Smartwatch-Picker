@@ -1,19 +1,25 @@
 class SmartwatchesController < ApplicationController
   def index
+    
+    log_keeper = LogKeeper.new
+    log_keeper.ip_address = request.remote_ip
 
     if(params[:phoneos])
       phoneos = PhoneOs.find_by_name(params[:phoneos])
       smartwatches = phoneos.smartwatches
+      log_keeper.phone_os_id = phoneos.id
     else
       smartwatches = Smartwatch.all
     end
 
     if (params[:battery])
       smartwatches = smartwatches.where('battery_life >= ?', params[:battery])
+      log_keeper.battery_life = params[:battery]
     end
 
     if (params[:price])
       smartwatches = smartwatches.where('price <= ?', params[:price])
+      log_keeper.price = params[:price]
     end
 
     # Sorted on Engadget Score - months since release
@@ -64,6 +70,8 @@ class SmartwatchesController < ApplicationController
       smartwatch.image_path = view_context.image_path(smartwatch.image_path)
     end
 
+    log_keeper.save
+    
     render json: smartwatches
   end
 end
