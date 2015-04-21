@@ -70,10 +70,7 @@ $(function () {
       html +=	'</h2>';
       html +=   '<span class="orange">Buy for $' + smartwatch.price + '</span>';
       html +=   '<br>';
-      html +=   smartwatch.notes;
-      //html +=   smartwatch.battery_life;
-      //html +=   '<br>'
-      //html +=   smartwatch.release_date;
+      html +=	smartwatch.notes;
       html += '</a>';
       
       return html
@@ -209,10 +206,7 @@ $(function () {
         }
     });
 
-    
-
     // SLIDER
-
 
     $("#battery-slider").slider({
         range: "max",
@@ -224,6 +218,7 @@ $(function () {
             $("#battery-life-amount").daysText(ui.value);
         }
     });
+    
     $("#battery-life-amount").daysText($("#battery-slider").slider("value"));
 
     $("#price-slider").slider({
@@ -236,7 +231,15 @@ $(function () {
             $("#price-amount").priceText(ui.value);
         }
     });
+    
     $("#price-amount").priceText($("#price-slider").slider("value"));
-
-
+    
+    
+    // SOCIAL MEDIA POP-UP
+    
+    $('#social-bar a').click(function() {
+      window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+      return false;
+    });
+    
 });

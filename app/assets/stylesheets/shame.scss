@@ -60,11 +60,62 @@ body {
 #social-bar {
   width: 100%;
   height: 40px;
-  background: #ff0000;
+  background: #fff;
   position: fixed;
   bottom: 0;
   z-index: 4;
   display: none;
+  color: #fff;
+  font-size: 16px;
+  
+  .row {
+    margin: 0 -1px !important;
+  }
+  
+  .col-xs-4 {
+    padding: 0 1px 0 0 !important;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    display: block;
+    width: 100%;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #social-bar {
+    font-size: 18px;
+  }
+}
+
+.gplus-button {
+  background-color: #e93f2e;
+  &:hover {
+    background-color: darken(#e93f2e, 10%);
+  }
+}
+
+.facebook-button {
+  background-color: #306199;
+  &:hover {
+    background-color: darken(#306199, 10%);
+  }
+}
+
+.twitter-button {
+  background-color: #26c4f1;
+  &:hover {
+    background-color: darken(#26c4f1, 10%);
+  }
 }
 
 .touch-target {
