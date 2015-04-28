@@ -63,6 +63,10 @@ smartwatches = [{name: 'LG G Watch', battery_life: 1, engadget_score: 68, releas
                 {name: 'Apple Watch', battery_life: 0.75, engadget_score: 75, release_date: Date.new(2015, 4, 24), image_path: 'smartwatches/apple-watch.png',
                  amazon_url: 'http://store.apple.com/us/buy-watch/apple-watch',
                  notes: 'Requires iPhone 5 or later with iOS 8.2 or higher', price: 549.00, phone_oses: ['iOS']
+                },
+                {name: 'LG Watch Urbane', battery_life: 1, engadget_score: 76, release_date: Date.new(2015, 4, 27), image_path: 'smartwatches/lg-watch-urbane.png',
+                 amazon_url: 'https://store.google.com/product/lg_watch_urbane',
+                 notes: 'Requires Android 4.3+', price: 349.00, phone_oses: ['Android']
                 }#,
                 #{name: 'Apple Watch Edition', battery_life: 0.75, engadget_score: 75, release_date: Date.new(2015, 4, 24), image_path: 'smartwatches/apple-watch-edition.png',
                 # amazon_url: 'http://store.apple.com/us/buy-watch/apple-watch-edition',
