@@ -1,5 +1,5 @@
 ActiveAdmin.register SupportedOs do
-  permit_params 
+  permit_params :phone_os_id, :smartwatch_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
