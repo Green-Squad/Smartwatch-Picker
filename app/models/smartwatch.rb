@@ -22,6 +22,7 @@ class Smartwatch < ActiveRecord::Base
 
       self.update(price: price) if price
       rescue NoMethodError
+        self.update(price: 0)
       end
   end
   end
